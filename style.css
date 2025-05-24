@@ -431,6 +431,22 @@ h2 {
 }
 
 
+.graph-section {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.966);
+    border-radius: 15px;
+}
+
+.section {
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    border-bottom-width: 20px;
+    border-bottom: 2px solid #0f0a0a49;
+}
+
 @media screen and (max-width: 768px) {
 
 

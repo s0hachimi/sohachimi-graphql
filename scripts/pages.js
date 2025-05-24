@@ -222,7 +222,18 @@ export async function showProfile() {
      auditContainer.append(FS, div)
 
 
-    document.body.append(grid, skillContainer, project, auditContainer)
+     const graphsection = document.createElement("div")
+
+     graphsection.setAttribute("class", "graph-section")
+
+    graphsection.innerHTML = `
+        <h1 class="section"> Graph Section </h1>
+    `
+
+    graphsection.append(skillContainer, auditContainer)
+
+
+    document.body.append(grid, project, graphsection)
     // log out 
 
     const log_out = document.querySelector(".log-out")
