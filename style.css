@@ -244,6 +244,8 @@ label {
     width: 80%;
     margin-bottom: 10px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-around;
     padding: 20px;
     box-shadow: 0px 0px 18px rgb(0, 24, 59);
@@ -286,7 +288,6 @@ p {
     text-align: center;
     overflow-y: auto;
     background: linear-gradient(#0058ddd7, #ffffff);
-    /* background-color: #e3eaf6; */
     width: 75%;
     height: 500px;
     border-radius: 20px;
@@ -303,6 +304,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+   flex-wrap: wrap;
     gap: 10px;
     margin: 10px;
     border: 2px outset rgba(0, 0, 0, 0.342);
@@ -430,6 +432,12 @@ h2 {
 
 
 @media screen and (max-width: 768px) {
+
+
+    .grid-stat{
+        margin: 0;
+    }
+
     .log-container {
         flex-direction: column;
         width: 95%;
@@ -439,6 +447,11 @@ h2 {
     .login-form,
     .info-side {
         padding: 30px;
+    }
+
+
+    .stat-lx {
+        display: grid;
     }
 
 }
