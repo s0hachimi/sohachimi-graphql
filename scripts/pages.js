@@ -63,7 +63,7 @@ export async function showProfile() {
     const LEVEL = level.transaction[0].amount
     const XP = xp.transaction_aggregate.aggregate.sum.amount
 
-    const MXP = xpCount(XP, "l")
+    const MXP = xpCount(XP)
 
     const stat = document.createElement("div")
     const statLevel = document.createElement("div")

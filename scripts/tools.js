@@ -92,23 +92,14 @@ export async function getSkillLevels() {
 }
 
 
-export function xpCount(xp, l) {
+export function xpCount(xp) {
     let p = xp / 1000
     let MXP = ""
 
     if (p > 1000) {
-        if (l === "l") {
-            MXP = `${Math.round(p.toFixed(2) / 100)} MB`
-        } else {
-            MXP = `${p.toFixed(2) / 100} MB`
-        }
-
+            MXP = `${(p / 1000).toFixed(2)} MB`
     } else {
-        if (l === "l") {
-            MXP = `${Math.round(p.toFixed(2))} KB`
-        } else {
-             MXP = `${p.toFixed(2)} KB`
-        }
+            MXP = `${(p.toFixed(2))} KB`
     }
 
     return MXP
