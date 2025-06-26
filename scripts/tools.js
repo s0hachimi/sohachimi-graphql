@@ -4,30 +4,39 @@ import { querys } from "./querys.js"
 
 export async function finishProject() {
     let project = await profileAPI(querys.project)
-
+   
     const projectContainer = document.createElement("div")
     projectContainer.setAttribute("class", "pro-container")
     projectContainer.innerHTML = `
     <h2> Projects </h2> `
 
-    project.transaction.forEach(proj => {
-        const bar = document.createElement("div")
-        bar.setAttribute("class", "project-bar")
+    if (project && Array.isArray(project.transaction)) {
+      
+        project?.transaction?.forEach(proj => {
+            const bar = document.createElement("div")
+            bar.setAttribute("class", "project-bar")
 
-        bar.innerHTML = `
+            bar.innerHTML = `
          <div class="bar">
             <p class="project-name">${proj.object.name}</p>
             <p class="project-xp">${xpCount(proj.amount)}</p>
             <p class="project-date">${new Date(proj.createdAt).toLocaleString()}</p>
            <p class="project-member">  ${proj.object.progresses[0].group.members
-                .map(member => `<a class="member-link" href="https://learn.zone01oujda.ma/git/${member.userLogin}" target="_blank">${member.userLogin}</a>`).join(' ')
-            }  </p>
+                    .map(member => `<a class="member-link" href="https://learn.zone01oujda.ma/git/${member.userLogin}" target="_blank">${member.userLogin}</a>`).join(' ')
+                }  </p>
             
         </div> 
         `
 
-        projectContainer.append(bar)
-    })
+            projectContainer.append(bar)
+        })
+    } else {
+         projectContainer.innerHTML += `<p>You Have No Projects !</p>`
+         projectContainer.style.width = "550px"
+         projectContainer.style.height = "250px"
+    }
+
+
 
 
     return projectContainer
@@ -93,13 +102,20 @@ export async function getSkillLevels() {
 
 
 export function xpCount(xp) {
-    let p = xp / 1000
     let MXP = ""
+    let i = ""
 
-    if (p > 1000) {
-            MXP = `${(p / 1000).toFixed(2)} MB`
+    if (xp < 0) {
+        xp *= -1
+        i = "-"
+    }
+
+    if (xp >= 1_000_000) {
+        MXP = `${i}${(xp / 1_000_000).toFixed(2)} MB`
+    } else if (xp >= 1_000) {
+        MXP = `${i}${(xp / 1_000).toFixed(2)} KB`
     } else {
-            MXP = `${(p.toFixed(2))} KB`
+        MXP = `${i}${xp} Bytes`
     }
 
     return MXP

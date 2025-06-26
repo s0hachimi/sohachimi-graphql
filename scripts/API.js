@@ -12,8 +12,8 @@ export async function loginAPI() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const username = form.username.value
-        const password = form.password.value
+        const username = form.querySelector('#username').value
+        const password = form.querySelector('#password').value
 
         try {
             const encoded = btoa(`${username}:${password}`)
